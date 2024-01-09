@@ -58,6 +58,15 @@ function game() {
         console.log("Player: ", + player + " ", "Computer: ", + computer);    
 
     }
+
+    if (player > computer){
+        console.log("Congratulations! You win!");
+    }else if (player < computer) {
+        console.log("Computer won. No worries, try again!");
+    }else {
+        console.log("It's a tie.");
+    }
+    
 }
 
 game();
