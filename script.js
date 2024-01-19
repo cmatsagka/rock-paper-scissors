@@ -48,25 +48,28 @@ function game() {
 
     let player = 0;
     let computer = 0;
+    let winner = false;
 
     const computerSelection = getComputerChoice();
     let note = result.textContent;
 
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
-            let choice = button.id; 
-            note = playRound(choice, computerSelection);
 
-            if (note.includes("win")){
-                player++;
-            }else if(note.includes("lose")){
-                computer++;
-            }
+            if (player < 5  && computer < 5 ) {
 
-            score.textContent = "Score is " + player + " " + computer ;
-            result.textContent = note;
+                let choice = button.id; 
+                note = playRound(choice, computerSelection);
 
-            if (player >= 5 || computer >= 5 ) {
+                if (note.includes("win")){
+                    player++;
+                }else if(note.includes("lose")){
+                    computer++;
+                }
+
+                score.textContent = "Score is " + player + " " + computer ;
+                result.textContent = note;
+            }else {
                 if (player > computer){
                     result.textContent = "Congratulations! You win!";
                 }else if (player < computer) {
@@ -74,7 +77,7 @@ function game() {
                 }else {
                     result.textContent = "It's a tie.";
                 }
-        
+            
                 score.textContent = "Final score is " + player + " " + computer ;
             }
         })
