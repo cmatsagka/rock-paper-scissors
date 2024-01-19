@@ -38,35 +38,48 @@ function game() {
     let player = 0;
     let computer = 0;
 
-    for (i=0; i<5; i++){ 
-        const playerSelection = prompt("Rock, Paper or Scissors?", "").toLowerCase();
-        const computerSelection = getComputerChoice();
+    const container = document.querySelector('#container');
+    const buttons = document.querySelectorAll('button');
 
-        let result = playRound(playerSelection, computerSelection);
-
-        if (result.includes("lose")){
-            computer++; 
-            console.log("Winner: Computer");   
-        } else if (result.includes("win")){
-            player++; 
-            console.log("Winner: Player");
-        }else{
-            console.log("No winner"); 
-        }
-
-        console.log(result);
-        console.log("Player: ", + player + " ", "Computer: ", + computer);    
-
-    }
-
-    if (player > computer){
-        console.log("Congratulations! You win!");
-    }else if (player < computer) {
-        console.log("Computer won. No worries, try again!");
-    }else {
-        console.log("It's a tie.");
-    }
+    const result = document.createElement('div');
+    const score = document.createElement('div');
     
+    result.textContent = "What do you choose?";
+    score.textContent = "Player: " + player + " " + "Computer: " + computer;
+
+    const computerSelection = getComputerChoice();
+    let note = result.textContent;
+
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            let choice = button.id; 
+            note = playRound(choice, computerSelection);
+            console.log(note);
+            if (note.includes("win")){
+                player++;
+            }else if(note.includes("lose")){
+                computer++;
+            }
+            console.log(player);
+            console.log(computer);
+
+            container.appendChild(result);
+            container.appendChild(score);
+            score.textContent = "Score is " + player + " " + computer ;
+            result.textContent = note;
+
+            if (player >= 5 || computer >= 5){
+                if (player > computer){
+                result.textContent = "Congratulations! You win!";
+                }else if (player < computer) {
+                result.textContent = "Computer won. No worries, try again!";
+                }else {
+                result.textContent = "It's a tie.";
+                }
+                score.textContent = "Final score is " + player + " " + computer ;
+            }
+        })
+    }) 
 }
 
 game();
