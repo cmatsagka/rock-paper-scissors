@@ -35,9 +35,6 @@ function playRound(playerSelection, computerSelection){
 
 function game() {
 
-    let player = 0;
-    let computer = 0;
-
     const container = document.querySelector('#container');
     const buttons = document.querySelectorAll('button');
 
@@ -45,7 +42,12 @@ function game() {
     const score = document.createElement('div');
     
     result.textContent = "What do you choose?";
-    score.textContent = "Player: " + player + " " + "Computer: " + computer;
+
+    container.appendChild(result);
+    container.appendChild(score);
+
+    let player = 0;
+    let computer = 0;
 
     const computerSelection = getComputerChoice();
     let note = result.textContent;
@@ -54,28 +56,25 @@ function game() {
         button.addEventListener('click', () => {
             let choice = button.id; 
             note = playRound(choice, computerSelection);
-            console.log(note);
+
             if (note.includes("win")){
                 player++;
             }else if(note.includes("lose")){
                 computer++;
             }
-            console.log(player);
-            console.log(computer);
 
-            container.appendChild(result);
-            container.appendChild(score);
             score.textContent = "Score is " + player + " " + computer ;
             result.textContent = note;
 
-            if (player >= 5 || computer >= 5){
+            if (player >= 5 || computer >= 5 ) {
                 if (player > computer){
-                result.textContent = "Congratulations! You win!";
+                    result.textContent = "Congratulations! You win!";
                 }else if (player < computer) {
-                result.textContent = "Computer won. No worries, try again!";
+                    result.textContent = "Computer won. No worries, try again!";
                 }else {
-                result.textContent = "It's a tie.";
+                    result.textContent = "It's a tie.";
                 }
+        
                 score.textContent = "Final score is " + player + " " + computer ;
             }
         })
