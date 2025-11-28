@@ -33,29 +33,17 @@ function playRound(humanScore, computerScore) {
 
     if (humanChoice === computerChoice) {
         return 'It\'s a tie';
-    }else if (humanChoice === 'rock') {
-        if (computerChoice === 'scissors') {
-            humanScore++;
-            return 'You win! ' + humanChoice + ' beats ' + computerChoice;
-        }else {
-            computerScore++;
-            return 'You lose! ' + computerChoice + ' beats ' + humanChoice;
-        }
-    }else if (humanChoice === 'scissors'){
-        if (computerChoice === 'paper') {
-            humanScore++;
-            return 'You win! ' + humanChoice + ' beats ' + computerChoice;
-        }else {
-            computerScore++;
-            return 'You lose! ' + computerChoice + ' beats ' + humanChoice;
-        }
+    }else if (humanChoice === 'rock' && computerChoice !== 'scissors') {
+        computerScore++;
+        return 'You lose! ' + computerChoice + ' beats ' + humanChoice;
+    }else if (humanChoice === 'scissors' && computerChoice !== 'paper'){
+        computerScore++;
+        return 'You lose! ' + computerChoice + ' beats ' + humanChoice;
+    }else if (humanChoice === 'paper' && computerChoice !== 'rock'){
+        computerScore++;
+        return 'You lose! ' + computerChoice + ' beats ' + humanChoice;
     }else {
-        if (computerChoice === 'rock') {
-            humanScore++;
-            return 'You win! ' + humanChoice + ' beats ' + computerChoice;
-        }else {
-            computerScore++;
-            return 'You lose! ' + computerChoice + ' beats ' + humanChoice;
-        }
+        humanScore++;
+        return 'You win! ' + humanChoice + ' beats ' + computerChoice;
     }
 }
