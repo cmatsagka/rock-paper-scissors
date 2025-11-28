@@ -50,10 +50,22 @@ const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
 function playGame() {
-    let round = 0;
+    let round = 1;
+    let winner = '';
 
-    while (round < 5) {
+    while (round <= 5) {
+        console.log('Round ', round);
         playRound(humanSelection, humanSelection);
         round++;
     }
+
+    if (humanScore === computerScore){
+        return 'It was a tie! Final score is: Player' + humanScore + ' - Computer ' + computerScore;
+    }else if (humanScore > computerScore) {
+        winner = 'Player';
+    }else {
+        winner = 'Computer';
+    }
+
+    return 'Winner is ' + winner + '! Final Score is Player: ' + humanScore + ' - Computer: ' + computerScore;  
 }
