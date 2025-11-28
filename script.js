@@ -1,7 +1,7 @@
 let humanScore = 0;
 let computerScore = 0;
 
-function getComputerChoice(){
+function getComputerChoice() {
     let rock = 0;
     let paper = 1;
     let scissors = 2;
@@ -18,6 +18,11 @@ function getComputerChoice(){
 
 }
 
-function getHumanChoice(){
-    return prompt('Rock? Paper? or Scissors?');
+function getHumanChoice() {
+    let choice = prompt('Rock? Paper? or Scissors?');
+    return choice.toLowerCase();
+}
+
+function playRound(humanScore, computerScore) {
+
 }
