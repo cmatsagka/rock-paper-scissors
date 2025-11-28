@@ -9,13 +9,13 @@ function getComputerChoice() {
     choice = Math.floor(Math.random() * 3);
 
     if (choice === rock) {
-            console.log('pc=', choice);
+            console.log('pc= rock');
         return 'rock';
     }else if (choice === paper) {
-            console.log('pc=', choice);
+            console.log('pc= paper');
         return 'paper';
     }else{
-            console.log('pc=', choice);
+            console.log('pc= scissors');
         return 'scissors';
     }
 
@@ -27,9 +27,7 @@ function getHumanChoice() {
     return choice.toLowerCase();
 }
 
-function playRound(humanScore, computerScore) {
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
+function playRound(humanChoice, computerChoice) {
 
     if (humanChoice === computerChoice) {
         return 'It\'s a tie';
@@ -45,5 +43,17 @@ function playRound(humanScore, computerScore) {
     }else {
         humanScore++;
         return 'You win! ' + humanChoice + ' beats ' + computerChoice;
+    }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+function playGame() {
+    let round = 0;
+
+    while (round < 5) {
+        playRound(humanSelection, humanSelection);
+        round++;
     }
 }
