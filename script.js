@@ -1,4 +1,4 @@
-function computerChoice(){
+function getComputerChoice(){
     let rock = 0;
     let paper = 1;
     let scissors = 2;
