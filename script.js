@@ -18,7 +18,6 @@ function getComputerChoice() {
             console.log('pc = scissors');
         return 'scissors';
     }
-
 }
 
 function getHumanChoice() {
