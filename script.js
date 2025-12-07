@@ -20,22 +20,22 @@ function getComputerChoice() {
     }
 }
 
-function playRound(humanChoice, computerChoice, result) {
+function playRound(humanChoice, computerChoice, score) {
 
     if (humanChoice === computerChoice) {
-        result.textContent ='It\'s a tie';
+        score.textContent ='It\'s a tie';
     }else if (humanChoice === 'rock' && computerChoice !== 'scissors') {
         computerScore++;
-        result.textContent ='You lose! ' + computerChoice + ' beats ' + humanChoice;
+        score.textContent ='You lose! ' + computerChoice + ' beats ' + humanChoice;
     }else if (humanChoice === 'scissors' && computerChoice !== 'paper'){
         computerScore++;
-        result.textContent ='You lose! ' + computerChoice + ' beats ' + humanChoice;
+        score.textContent ='You lose! ' + computerChoice + ' beats ' + humanChoice;
     }else if (humanChoice === 'paper' && computerChoice !== 'rock'){
         computerScore++;
-        result.textContent ='You lose! ' + computerChoice + ' beats ' + humanChoice;
+        score.textContent ='You lose! ' + computerChoice + ' beats ' + humanChoice;
     }else {
         humanScore++;
-        result.textContent ='You win! ' + humanChoice + ' beats ' + computerChoice;
+        score.textContent ='You win! ' + humanChoice + ' beats ' + computerChoice;
     }
 }
 
@@ -53,8 +53,8 @@ function playGame() {
             if (humanScore < 5 && computerScore < 5){
                 let humanChoice = button.id;
                 console.log('Human: ' + humanChoice);
-                playRound(humanChoice, computerChoice, result);
-                result.textContent ='Score: Player ' + humanScore + ' - Computer ' + computerScore;
+                playRound(humanChoice, computerChoice, score);
+                score.textContent ='Score: Player ' + humanScore + ' - Computer ' + computerScore;
             }else {
                 if (humanScore === computerScore){
                     result.textContent = 'It was a tie! Final score is: Player ' + humanScore + ' - Computer ' + computerScore;
