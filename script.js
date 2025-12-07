@@ -26,23 +26,24 @@ function getComputerChoice() {
 //     return choice.toLowerCase();
 // }
 
-function playRound(humanChoice, computerChoice) {
+function playRound(humanChoice, computerChoice, result) {
 
     if (humanChoice === computerChoice) {
-        console.log('It\'s a tie');
+        result.textContent ='It\'s a tie';
     }else if (humanChoice === 'rock' && computerChoice !== 'scissors') {
         computerScore++;
-        console.log('You lose! ' + computerChoice + ' beats ' + humanChoice);
+        result.textContent ='You lose! ' + computerChoice + ' beats ' + humanChoice;
     }else if (humanChoice === 'scissors' && computerChoice !== 'paper'){
         computerScore++;
-        console.log('You lose! ' + computerChoice + ' beats ' + humanChoice);
+        result.textContent ='You lose! ' + computerChoice + ' beats ' + humanChoice;
     }else if (humanChoice === 'paper' && computerChoice !== 'rock'){
         computerScore++;
-        console.log('You lose! ' + computerChoice + ' beats ' + humanChoice);
+        result.textContent ='You lose! ' + computerChoice + ' beats ' + humanChoice;
     }else {
         humanScore++;
-        console.log('You win! ' + humanChoice + ' beats ' + computerChoice);
+        result.textContent ='You win! ' + humanChoice + ' beats ' + computerChoice;
     }
+
 }
 
 function playGame() {
@@ -69,12 +70,13 @@ function playGame() {
 
 const buttons = document.querySelectorAll('button');
 let computerChoice = getComputerChoice();
+let result = document.querySelector('.result');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         let humanChoice = button.id;
         console.log('Human: ' + humanChoice);
-        playRound(humanChoice, computerChoice);
+        playRound(humanChoice, computerChoice, result);
     });
 });
 
