@@ -20,12 +20,6 @@ function getComputerChoice() {
     }
 }
 
-// function getHumanChoice(btn) {
-//     let choice = btn.id;
-//     console.log('human = ', choice);
-//     return choice.toLowerCase();
-// }
-
 function playRound(humanChoice, computerChoice, result) {
 
     if (humanChoice === computerChoice) {
@@ -49,37 +43,31 @@ function playGame() {
     let round = 1;
     let winner = '';
     
-    // while (round <= 5) {
-        //     console.log('Round ', round);
-        //     playRound(getHumanChoice(), getComputerChoice());
-        //     console.log('Score is: Player ' + humanScore + ' - Computer: ' + computerScore);
-        //     round++;
-        // }
-        
-        const buttons = document.querySelectorAll('button');
-        let computerChoice = getComputerChoice();
-        let result = document.querySelector('.result');
-        let score = document.querySelector('.score');
-        
-        buttons.forEach((button) => {
-            button.addEventListener('click', () => {
+    const buttons = document.querySelectorAll('button');
+    let computerChoice = getComputerChoice();
+    let result = document.querySelector('.result');
+    let score = document.querySelector('.score');
+    
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if (humanScore < 5 && computerScore < 5){
                 let humanChoice = button.id;
                 console.log('Human: ' + humanChoice);
                 playRound(humanChoice, computerChoice, result);
                 result.textContent ='Score: Player ' + humanScore + ' - Computer ' + computerScore;
-            });
+            }else {
+                if (humanScore === computerScore){
+                    result.textContent = 'It was a tie! Final score is: Player ' + humanScore + ' - Computer ' + computerScore;
+                }else if (humanScore > computerScore) {
+                    winner = 'Player';
+                }else {
+                    winner = 'Computer';
+                }
+            
+                result.textContent ='Winner is ' + winner + '! Final Score is: Player ' + humanScore + ' - Computer ' + computerScore;
+            }
         });
-        
-
-    if (humanScore === computerScore){
-        return 'It was a tie! Final score is: Player ' + humanScore + ' - Computer ' + computerScore;
-    }else if (humanScore > computerScore) {
-        winner = 'Player';
-    }else {
-        winner = 'Computer';
-    }
-
-    return 'Winner is ' + winner + '! Final Score is: Player ' + humanScore + ' - Computer ' + computerScore;  
+    });
 }
 
 playGame();
