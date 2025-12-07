@@ -66,7 +66,8 @@ function playGame() {
                 }else {
                     winner = 'Computer';
                 }
-            
+                
+                score.remove();
                 result.textContent ='Winner is ' + winner + '! Final Score is: Player ' + humanScore + ' - Computer ' + computerScore;
             }
         });
