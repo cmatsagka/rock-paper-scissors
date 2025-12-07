@@ -51,7 +51,7 @@ function playGame() {
     
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
-            if (humanScore < 5 && computerScore < 5){
+            if (humanScore <5 && computerScore <5){
                 let humanChoice = button.id;
                 console.log('Human: ' + humanChoice);
                 playRound(humanChoice, computerChoice, score);
