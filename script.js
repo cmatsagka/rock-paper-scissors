@@ -43,31 +43,33 @@ function playRound(humanChoice, computerChoice, result) {
         humanScore++;
         result.textContent ='You win! ' + humanChoice + ' beats ' + computerChoice;
     }
-
 }
 
 function playGame() {
     let round = 1;
     let winner = '';
-
-    // while (round <= 5) {
-    //     console.log('Round ', round);
-    //     playRound(getHumanChoice(), getComputerChoice());
-    //     console.log('Score is: Player ' + humanScore + ' - Computer: ' + computerScore);
-    //     round++;
-    // }
-
-    const buttons = document.querySelectorAll('button');
-    let computerChoice = getComputerChoice();
-    let result = document.querySelector('.result');
     
-    buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-            let humanChoice = button.id;
-            console.log('Human: ' + humanChoice);
-            playRound(humanChoice, computerChoice, result);
+    // while (round <= 5) {
+        //     console.log('Round ', round);
+        //     playRound(getHumanChoice(), getComputerChoice());
+        //     console.log('Score is: Player ' + humanScore + ' - Computer: ' + computerScore);
+        //     round++;
+        // }
+        
+        const buttons = document.querySelectorAll('button');
+        let computerChoice = getComputerChoice();
+        let result = document.querySelector('.result');
+        let score = document.querySelector('.score');
+        
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                let humanChoice = button.id;
+                console.log('Human: ' + humanChoice);
+                playRound(humanChoice, computerChoice, result);
+                result.textContent ='Score: Player ' + humanScore + ' - Computer ' + computerScore;
+            });
         });
-    });
+        
 
     if (humanScore === computerScore){
         return 'It was a tie! Final score is: Player ' + humanScore + ' - Computer ' + computerScore;
