@@ -40,13 +40,14 @@ function playRound(humanChoice, computerChoice, score) {
 }
 
 function playGame() {
-    let round = 1;
     let winner = '';
+    let roundCount = 1;
     
     const buttons = document.querySelectorAll('button');
     let computerChoice = getComputerChoice();
     let result = document.querySelector('.result');
     let score = document.querySelector('.score');
+    let round = document.querySelector('.round');
     
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
@@ -54,6 +55,8 @@ function playGame() {
                 let humanChoice = button.id;
                 console.log('Human: ' + humanChoice);
                 playRound(humanChoice, computerChoice, score);
+                round.textContent = 'Round: ' + roundCount;
+                roundCount++;
                 score.textContent ='Score: Player ' + humanScore + ' - Computer ' + computerScore;
             }else {
                 if (humanScore === computerScore){
