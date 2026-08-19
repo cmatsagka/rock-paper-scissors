@@ -53,4 +53,4 @@ rock-paper-scissors/
 
 ## 🎨 Attribution
 
-Icons: Vector icons provided by FontAwesome.
+Icons: Vector icons provided by [FontAwesome](https://fontawesome.com/).
