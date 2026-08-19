@@ -4,7 +4,7 @@
 
 <a href="https://cmatsagka.github.io/rock-paper-scissors/" style="color: inherit; text-decoration: underline; font-weight: 600;">🌐 View Live Demo</a>
 
-![Rock Papers Scissors Preview Image](image.png)
+![Rock Papers Scissors Preview Image](assets/image.png)
 
 ---
 
